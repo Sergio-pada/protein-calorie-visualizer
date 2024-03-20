@@ -6,6 +6,7 @@ st.title('Nutritional Information')
 df = pd.read_csv('nutrients.csv')
 
 st.subheader('Original Data')
+
 st.write(df)
 
 # Make columns numeric so we can perform operations on them
@@ -20,13 +21,10 @@ sorted_df = df.sort_values(by='Protein/Calorie', ascending=False)
 
 sorted_df = sorted_df[['Food', 'Protein', 'Calories', 'Protein/Calorie', 'Category']]
 
-
 all_tab, meat_tab, dairy_tab, seafood_tab, nuts_and_seeds_tab = st.tabs(["All Foods", "Meat", "Dairy", "Seafood", "Nuts and Seeds"])
 
 with all_tab:
-    
     st.write(sorted_df)
-
 with meat_tab:
     st.table(sorted_df[sorted_df["Category"] == "Meat, Poultry"])
 with dairy_tab:
